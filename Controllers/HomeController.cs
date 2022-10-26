@@ -80,5 +80,16 @@ namespace PTLab2_Final.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Click(int? id)
+        {
+            if (id != null)
+            {
+                Electronic? electronic = await db.Electronics.FirstOrDefaultAsync(p => p.Id == id);
+                if (electronic != null) return View(electronic);
+            }
+            return NotFound();
+        }
+
+
     }
 }
