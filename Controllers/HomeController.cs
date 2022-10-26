@@ -90,6 +90,19 @@ namespace PTLab2_Final.Controllers
             return NotFound();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Buy(int? id, int amount)
+        {
+            Electronic? electronic = await db.Electronics.FirstOrDefaultAsync(p => p.Id == id);
+            electronic.Sold+=amount;
+            if(electronic.Sold%10 == 0)
+            {
+                electronic.Price += electronic.Price * 0.15f;
+            }
+            db.Electronics.Update(electronic);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
 
     }
 }

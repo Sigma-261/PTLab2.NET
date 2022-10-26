@@ -22,4 +22,15 @@
         <label asp-for="Sold">Продано</label><br />
         <input type="number" asp-for="Sold" />
     </p>
+    <p>
+        <tr>
+            <td>
+                <input type="number" name="amount"/>
+                    <input asp-controller="Home" asp-action="Buy" method="post" asp-route-id="@Model.Id" type="submit" value="Купить" />
+                
+            </td>
+        </tr>
+
+        
+    </p>
 </form>
