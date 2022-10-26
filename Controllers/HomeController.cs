@@ -17,16 +17,16 @@ namespace PTLab2_Final.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            return View(await db.Electronics.ToListAsync());
         }
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(User user)
+        public async Task<IActionResult> Create(Electronic electronic)
         {
-            db.Users.Add(user);
+            db.Electronics.Add(electronic);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -46,5 +46,39 @@ namespace PTLab2_Final.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id != null)
+            {
+                Electronic? electronic = await db.Electronics.FirstOrDefaultAsync(p => p.Id == id);
+                if (electronic != null)
+                {
+                    db.Electronics.Remove(electronic);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            }
+            return NotFound();
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id != null)
+            {
+                Electronic? electronic = await db.Electronics.FirstOrDefaultAsync(p => p.Id == id);
+                if (electronic != null) return View(electronic);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Electronic electronic)
+        {
+            db.Electronics.Update(electronic);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -1,14 +1,25 @@
-﻿@model IEnumerable<PTLab2_Final.Models.User>
+﻿@model IEnumerable<PTLab2_Final.Models.Electronic>
  
 <h2>Список пользователей</h2>
 <p><a asp-action="Create">Добавить пользователя</a></p>
 <table class="table">
-     <tr><th>Имя</th><th>Возраст</th></tr>
+    <tr><th>Имя</th><th>Категория</th><th>Цена</th><th>Всего</th><th>Продано</th></tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Name</td>
-            <td>@item.Age</td>
+            <td><a asp-action="Create">@item.Name</a></td>
+            <td>@item.Category</td>
+            <td>@item.Price</td>
+            <td>@item.ForSale</td>
+            <td>@item.Sold</td>
+                <td>
+                <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
+                </td>
+                <td>
+                    <form asp-controller="Home" asp-action="Delete" method="post"  asp-route-id="@item.Id">
+                        <input type="submit" value="Удалить" />
+                    </form>
+                </td>
         </tr>
     }
 </table>
