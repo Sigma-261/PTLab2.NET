@@ -94,11 +94,20 @@ namespace PTLab2_Final.Controllers
         public async Task<IActionResult> Buy(int? id, int amount)
         {
             Electronic? electronic = await db.Electronics.FirstOrDefaultAsync(p => p.Id == id);
-            electronic.Sold+=amount;
-            if(electronic.Sold%10 == 0)
+            
+            //Попробовать цикл со счетчиком до amount
+            for(int i=0;i < amount; i++)
             {
-                electronic.Price += electronic.Price * 0.15f;
+                electronic.Sold++;
+                if (electronic.Sold == 10)
+                {
+                    electronic.Price += electronic.Price * 0.15f;
+                    electronic.Sold = 0;
+                }
+                
             }
+            electronic.ForSale -= amount;
+            
             db.Electronics.Update(electronic);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
