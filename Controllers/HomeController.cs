@@ -101,9 +101,8 @@ namespace PTLab2_Final.Controllers
                 electronic.Counter++;
                 if (electronic.Counter == 10)
                 {
-                    electronic.Price += electronic.Price * 0.15f;
+                    electronic.Price += electronic.Price * 0.15;
                     electronic.Counter = 0;
-                    
                 }
                 
             }

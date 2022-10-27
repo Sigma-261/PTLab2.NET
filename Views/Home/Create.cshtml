@@ -1,9 +1,9 @@
 ﻿@model PTLab2_Final.Models.Electronic
  
-<h2>Добавление пользователя</h2>
+<h2>Добавление нового товара</h2>
 <form asp-action="create" asp-controller="home">
     <p>
-        <label asp-for="Name">Имя</label><br />
+        <label asp-for="Name">Название</label><br />
         <input type="text" asp-for="Name" />
     </p>
     <p>
@@ -12,21 +12,21 @@
     </p>
     <p>
         <label asp-for="Price">Цена</label><br />
-        <input type="number" asp-for="Price" />
+        <input type="number" min="0" asp-for="Price" />
     </p>
     <p>
-        <label asp-for="ForSale">Всего товара</label><br />
-        <input type="number" asp-for="ForSale" />
+        <label asp-for="ForSale">Всего</label><br />
+        <input type="number" min="0" asp-for="ForSale" />
     </p>
     <p>
         <label asp-for="Sold">Продано</label><br />
-        <input type="number" asp-for="Sold" />
+        <input type="number" min="0" asp-for="Sold" />
     </p>
     <p>
         <label asp-for="Counter">Счетчик</label><br />
-        <input type="number" asp-for="Counter" />
+        <input type="number" min="0"  asp-for="Counter" />
     </p>
     <p>
-        <input type="submit" value="Отправить" />
+        <input type="submit" value="Сохранить" />
     </p>
 </form>

@@ -1,31 +1,31 @@
 ﻿@model PTLab2_Final.Models.Electronic
 
-<h2>Редактирование пользователя</h2>
+<h2>Страница товара "@Model.Name"</h2>
 <form asp-action="click" asp-controller="home" asp-route-id="@Model.Id">
     <p>
-        <label asp-for="Name">Имя</label><br />
-        <input type="text" asp-for="Name" />
+        <label asp-for="Name">Название</label><br />
+        <input type="text" readonly asp-for="Name" />
     </p>
     <p>
         <label asp-for="Category">Категория</label><br />
-        <input type="text" asp-for="Category" />
+        <input type="text" readonly asp-for="Category" />
     </p>
     <p>
         <label asp-for="Price">Цена</label><br />
-        <input type="number" asp-for="Price" />
+        <input type="number" readonly asp-for="Price" />
     </p>
     <p>
-        <label asp-for="ForSale">Продано</label><br />
-        <input type="number" asp-for="ForSale" />
+        <label asp-for="ForSale">Всего</label><br />
+        <input type="number" readonly asp-for="ForSale" />
     </p>
     <p>
         <label asp-for="Sold">Продано</label><br />
-        <input type="number" asp-for="Sold" />
+        <input type="number" readonly asp-for="Sold" />
     </p>
     <p>
         <tr>
             <td>
-                <input type="number" name="amount"/>
+                <input type="number" min="0" name="amount"/>
                     <input asp-controller="Home" asp-action="Buy" method="post" asp-route-id="@Model.Id" type="submit" value="Купить" />
                 
             </td>
