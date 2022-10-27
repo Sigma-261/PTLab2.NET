@@ -3,7 +3,7 @@
 <h2>Список пользователей</h2>
 <p><a asp-action="Create">Добавить пользователя</a></p>
 <table class="table">
-    <tr><th>Имя</th><th>Категория</th><th>Цена</th><th>Всего</th><th>Продано</th></tr>
+    <tr><th>Имя</th><th>Категория</th><th>Цена</th><th>Всего</th><th>Продано</th><th>Счетчик</th></tr>
     @foreach (var item in Model)
     {
         <tr>
@@ -12,6 +12,7 @@
             <td>@item.Price</td>
             <td>@item.ForSale</td>
             <td>@item.Sold</td>
+            <td>@item.Counter</td>
                 <td>
                 <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
                 </td>

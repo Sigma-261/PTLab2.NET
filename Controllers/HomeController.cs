@@ -98,16 +98,19 @@ namespace PTLab2_Final.Controllers
             //Попробовать цикл со счетчиком до amount
             for(int i=0;i < amount; i++)
             {
-                electronic.Sold++;
-                if (electronic.Sold == 10)
+                electronic.Counter++;
+                if (electronic.Counter == 10)
                 {
                     electronic.Price += electronic.Price * 0.15f;
-                    electronic.Sold = 0;
+                    electronic.Counter = 0;
+                    
                 }
                 
             }
+
             electronic.ForSale -= amount;
-            
+            electronic.Sold += amount;
+
             db.Electronics.Update(electronic);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

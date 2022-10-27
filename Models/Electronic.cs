@@ -8,5 +8,6 @@
         public float? Price { get; set; } // цена товара
         public int ForSale { get; set; } // кол-во для продажи
         public int Sold { get; set; } // кол-во проданного товара
+        public int Counter { get; set; } // счетчик проданных товаров
     }
 }
