@@ -31,10 +31,6 @@ namespace PTLab2_Final.Controllers
             return RedirectToAction("Index");
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
 
         public IActionResult Privacy()
         {
