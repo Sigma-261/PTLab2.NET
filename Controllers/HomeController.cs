@@ -14,7 +14,6 @@ namespace PTLab2_Final.Controllers
             _logger = logger;
             db = context;
         }
-
         public async Task<IActionResult> Index()
         {
             return View(await db.Electronics.ToListAsync());
@@ -31,10 +30,6 @@ namespace PTLab2_Final.Controllers
             return RedirectToAction("Index");
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
 
         public IActionResult Privacy()
         {
